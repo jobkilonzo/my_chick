@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:padding="10dp"
+        android:id="@+id/tileTextView"
+        style="@style/word_title"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:hint="Drug"
+        android:background="@android:color/holo_orange_light" />
+    <TextView
+        android:layout_weight="1"
+        android:id="@+id/amountTextView"
+        style="@style/word_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Ksh.0"
+        android:padding="10dp"
+        android:background="@android:color/holo_orange_light" />
+    <TextView
+        android:padding="10dp"
+        android:layout_weight="2"
+        android:id="@+id/adateTextView"
+        style="@style/word_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="1/2/2022"
+        android:background="@android:color/holo_orange_light" />
+</LinearLayout>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My Chick</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="empty_not_saved">Word not saved because it is empty.</string>
+    <string name="add_cost">Add Cost</string>
+    <string-array name="cost_arrays">
+        <item>Feeds</item>
+        <item>Drugs</item>
+    </string-array>
+</resources>
