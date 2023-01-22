@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.example.mychick.databinding.ActivityMainBinding
 import com.example.mychick.kuroiler.Kuroiler
 import com.example.mychick.kuroiler.KuroilerCost
@@ -30,11 +31,15 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, Kuroiler::class.java)
             startActivity(intent)
         }
+//        kuroilerViewModel.cost.observe(this, Observer {
+//            binding.textViewDrugs.text = it.toString()
+//        })
+
+       // binding.textViewDrugs.text = kuroilerViewModel.getSumById("drugs").toString()
 
 //        kuroilerViewModel.kuroilerCost.observe(this){
 //            kuroilerCost -> kuroilerCost.
 //        }
-        binding.textViewDrugs.text = kuroilerViewModel.allCost.toString()
         binding.btnKuroiler.setOnClickListener {
 
             val intent = Intent(this, Kuroiler::class.java)

@@ -19,9 +19,8 @@ class CostListAdapter : ListAdapter<KuroilerCost, KuroilerCostViewHolder>(WordsC
     override fun onBindViewHolder(holder: KuroilerCostViewHolder, position: Int) {
         val current = getItem(position)
         val type = current.type
-        var amount = current.amount
-        val date = current.date
-        holder.bind(type, amount, date)
+        val amount = current.amount
+        holder.bind(type, amount)
 
     }
 
@@ -40,12 +39,10 @@ class CostListAdapter : ListAdapter<KuroilerCost, KuroilerCostViewHolder>(WordsC
     class KuroilerCostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val type: TextView = itemView.findViewById(R.id.tileTextView)
         private val amount: TextView = itemView.findViewById(R.id.amountTextView)
-        private val date: TextView = itemView.findViewById(R.id.adateTextView)
 
-        fun bind(text1: String?, text2: Int?, text3: String?) {
+        fun bind(text1: String?, text2: Int?) {
             type.text = text1
             amount.text = text2.toString()
-            date.text = text3
         }
 
         companion object {

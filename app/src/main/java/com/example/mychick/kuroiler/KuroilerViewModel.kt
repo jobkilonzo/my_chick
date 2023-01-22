@@ -8,8 +8,17 @@ class KuroilerViewModel(private val repository: KuroilerRepository): ViewModel()
 
     val allCost: LiveData<List<KuroilerCost>> = repository.allCost.asLiveData()
 
-    val cost: LiveData<Int> = repository.cost.asLiveData()
+    //val cost: LiveData<Int> = repository.cost.asLiveData()
 
+    val isEmpty = viewModelScope.launch{repository.isEmpty()}
+
+    fun getSumById(type: String) {
+        repository.getSumById(type)
+    }
+
+    fun updateCost(type: String, amount: Int) = viewModelScope.launch{
+        repository.updateCost(type, amount)
+    }
     fun insert(kuroilerCost: KuroilerCost) = viewModelScope.launch{
         repository.insert(kuroilerCost)
     }

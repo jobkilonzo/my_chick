@@ -10,6 +10,5 @@ data class KuroilerCost(
 //    val id: Int,
     @PrimaryKey
     val type: String,
-    val amount: Int,
-    val date: String
+    val amount: Int
 )

@@ -49,11 +49,17 @@ class KuroilerAddActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
                 Toast.makeText(this, "You've not entered cost", Toast.LENGTH_SHORT).show()
             } else {
                 val cost = editWordView.text.toString()
-                val sdf = DateTimeFormatter.ofPattern("dd-MM-yyyy")
 
-                val date = LocalDateTime.now().format(sdf)
-                kuroilerViewModel.insert(KuroilerCost(cosSElected, cost.toInt(), date))
-                Log.i("Cost", "$cosSElected $cost $date")
+                //kuroilerViewModel.insert(KuroilerCost(cosSElected, cost.toInt()))
+//                if (kuroilerViewModel.isEmpty.equals(true)){
+                if (kuroilerViewModel.allCost.value?.isEmpty() == false){
+                    kuroilerViewModel.insert(KuroilerCost(cosSElected, cost.toInt()))
+                    Log.i("Cost", "$cosSElected $cost")
+                }else{
+                    kuroilerViewModel.updateCost(cosSElected, cost.toInt())
+                }
+                //kuroilerViewModel.updateCost(cosSElected, cost.toInt())
+
             }
             finish()
         }
