@@ -1,26 +1,24 @@
 package com.example.mychick
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.util.Log
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import com.example.mychick.databinding.ActivityMainBinding
 import com.example.mychick.kuroiler.Kuroiler
-import com.example.mychick.kuroiler.KuroilerCost
 import com.example.mychick.kuroiler.KuroilerViewModel
 import com.example.mychick.kuroiler.KuroilerViewmodelFactory
-import com.example.mychick.raibowrooster.RainbowRooster
 
 class MainActivity : AppCompatActivity() {
 
-    private val kuroilerViewModel: KuroilerViewModel by viewModels<KuroilerViewModel> {
-        KuroilerViewmodelFactory((application as MyCickApplication).kuroilerRepository)
-    }
     private lateinit var binding: ActivityMainBinding
     private val kuroilerctivityRequestCode = 1
+
+    private val kuroilerViewModel: KuroilerViewModel by viewModels {
+        KuroilerViewmodelFactory((application as MyCickApplication).kuroilerRepository)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -41,9 +39,22 @@ class MainActivity : AppCompatActivity() {
 //            kuroilerCost -> kuroilerCost.
 //        }
         binding.btnKuroiler.setOnClickListener {
-
             val intent = Intent(this, Kuroiler::class.java)
             startActivity(intent)
+        }
+
+        listDataFromRoom()
+    }
+
+    private fun listDataFromRoom() {
+        try {
+            kuroilerViewModel.allCost.observe(this) { response ->
+                response.let {
+                    Log.d("allCost", "${it.toMutableList()}")
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
