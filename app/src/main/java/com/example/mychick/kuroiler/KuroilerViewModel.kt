@@ -12,8 +12,8 @@ class KuroilerViewModel(private val repository: KuroilerRepository) : ViewModel(
 
     val isEmpty = viewModelScope.launch { repository.isEmpty() }
 
-    fun getSumById(id: Int) {
-        repository.getSumById(id)
+    fun getSumById(type: String) {
+        repository.getSumById(type)
     }
 
     fun updateCost(id: Int, amount: Int) = viewModelScope.launch {

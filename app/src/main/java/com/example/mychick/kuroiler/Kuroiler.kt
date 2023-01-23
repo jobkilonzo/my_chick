@@ -18,7 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class Kuroiler : AppCompatActivity() {
 
-    private val kuroilerViewModel: KuroilerViewModel by viewModels<KuroilerViewModel> {
+    private val kuroilerViewModel: KuroilerViewModel by viewModels {
         KuroilerViewmodelFactory((application as MyCickApplication).kuroilerRepository)
     }
 

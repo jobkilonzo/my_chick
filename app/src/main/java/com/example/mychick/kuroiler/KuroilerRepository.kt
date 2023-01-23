@@ -9,8 +9,8 @@ class KuroilerRepository(private val kuroilerDao: KuroilerDao) {
 
     suspend fun isEmpty(): Boolean = kuroilerDao.isEmpty()
 
-    fun getSumById(id: Int) {
-        kuroilerDao.getSumById(id)
+    fun getSumById(type: String) {
+        kuroilerDao.getSumById(type)
     }
 
     @WorkerThread

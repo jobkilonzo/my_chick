@@ -72,16 +72,21 @@ class KuroilerAddActivity : AppCompatActivity(), AdapterView.OnItemSelectedListe
             kuroilerViewModel.allCost.observe(this) { response ->
                 response.let {
                     Log.d("allCost", "$it")
-                    if (it.toMutableList().isNotEmpty()) {
-                        // insert logic
-                        kuroilerViewModel.insert(
-                            KuroilerCost(
-                                null,
-                                cost.toInt()
+                    when {
+                        it.toMutableList().isNotEmpty() -> {
+                            // update logic
+                            updateRoomDb(cost, it)
+                        }
+                        else -> {
+                            // insert logic
+                            kuroilerViewModel.insert(
+                                KuroilerCost(
+                                    null,
+                                    cost.toInt(),
+                                    binding.chooseCost.selectedItem.toString()
+                                )
                             )
-                        )
-                    } else {
-                        updateRoomDb(cost, it)
+                        }
                     }
                 }
             }

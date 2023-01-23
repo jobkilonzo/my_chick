@@ -21,8 +21,8 @@ interface KuroilerDao {
 
     @Query("SELECT amount FROM kuroiler_cost")
     fun geCost(): Flow<Int>
-    @Query("SELECT id FROM kuroiler_cost WHERE id = :id")
-    fun getSumById(id: Int): String
+    @Query("SELECT type FROM kuroiler_cost WHERE type = :type")
+    fun getSumById(type: String): String
 
 //    @Transaction
 //    suspend fun updateOrInsertCost(kuroilerCost: KuroilerCost) =
